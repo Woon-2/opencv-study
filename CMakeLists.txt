@@ -5,7 +5,7 @@
 
 cmake_minimum_required(VERSION 3.18)
 
-if (NOT DEFINED CMAKE_BUILD_TYPE AND NOT DEFINED CMAKE_CONFIGURATION_TYPES)
+if(NOT DEFINED CMAKE_BUILD_TYPE AND NOT DEFINED CMAKE_CONFIGURATION_TYPES)
     message(STATUS "setting CMAKE_BUILD_TYPE to Release(default)
     as none was specified.")
     set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the build type" FORCE)
@@ -13,7 +13,7 @@ if (NOT DEFINED CMAKE_BUILD_TYPE AND NOT DEFINED CMAKE_CONFIGURATION_TYPES)
         PROPERTY STRINGS "Debug" "Release")
 endif()
 
-if (NOT DEFINED CMAKE_INSTALL_PREFIX)
+if(NOT DEFINED CMAKE_INSTALL_PREFIX)
     message(STATUS "setting CMAKE_INSTALL_PREFIX to
         ${CMAKE_CURRENT_SOURCE_DIR}/install(default) as none was specified.")
     set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/install")
@@ -23,6 +23,53 @@ project(opencv_study VERSION 2023.03.28 LANGUAGES CXX)
 
 message(STATUS "configuring opencv_study(version ${CMAKE_PROJECT_VERSION})...")
 message(STATUS "Author: @Woon2 (wkdauddns9@gmail.com)")
+
+# Find and setup OpenCV
+if(NOT DEFINED OpenCV_DIR
+    AND NOT DEFINED ENV{OpenCV_DIR})
+    message(STATUS "the variable \"OpenCV_DIR\"(a directory which is
+        the parent directory of include directory, library directory,
+        binary directory, etc.) has not been defined.")
+
+    message(STATUS "searching OpenCV directory in PATH...")
+    find_path(OpenCV_DIR 
+        NAMES "OpenCVConfig.cmake" "OpenCVConfig-version.cmake"
+        PATHS $ENV{Path})
+
+    if (OpenCV_DIR STREQUAL OpenCV_DIR-NOTFOUND)
+        message(FATAL_ERROR "OpenCV not found.")
+    endif()
+
+    # TODO: ignore warnings for each OpenCV libraries(targets)
+
+endif()
+
+find_package(OpenCV REQUIRED)
+
+# Copy dlls to build directory for Windows
+if (WIN32)
+    find_path(OpenCV_BINDIR
+        NAMES "opencv_version.exe" "opencv_versiond.exe"
+            "opencv_version_win32.exe" "opencv_version_win32d.exe"
+        # it has a possiblity that OpenCV_DIR has not be defined, still okay? 
+        PATHS $ENV{Path} $ENV{OpenCV_DIR} ${OpenCV_DIR}
+    )
+
+    if(OpenCV_BINDIR STREQUAL OpenCV_BINDIR-NOTFOUND)
+        message(FATAL_ERROR "OpenCV binary directory is not found.
+            make OpenCV binary directory child of OpenCV_DIR or
+            add OpenCV binary directory to PATH.")
+    endif()
+
+    file(GLOB OpenCV_BINARY
+        "${OpenCV_BINDIR}/*.dll"
+        "${OpenCV_BINDIR}/*.pdb")
+
+    file(COPY ${OpenCV_BINARY} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+    install(FILES ${OpenCV_BINARY} DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
+endif()
+
+# Configure main project
 
 add_executable(ocvs main.cpp)
 
@@ -85,6 +132,9 @@ endif()
 set_target_properties(ocvs
     PROPERTIES CXX_STANDARD 20
 )
+
+# Link
+target_link_libraries(ocvs ${OpenCV_LIBS})
 
 # Installation
 install(TARGETS ocvs
