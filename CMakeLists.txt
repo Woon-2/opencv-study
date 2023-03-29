@@ -39,9 +39,6 @@ if(NOT DEFINED OpenCV_DIR
     if (OpenCV_DIR STREQUAL OpenCV_DIR-NOTFOUND)
         message(FATAL_ERROR "OpenCV not found.")
     endif()
-
-    # TODO: ignore warnings for each OpenCV libraries(targets)
-
 endif()
 
 find_package(OpenCV REQUIRED)
@@ -113,7 +110,8 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES MSVC)
         /wd4514
         /wd5045
         /Zc:__cplusplus
-        /Zc:preprocessor)
+        /Zc:preprocessor
+    )
 endif()
 
 # Platform setting
@@ -134,6 +132,7 @@ set_target_properties(ocvs
 )
 
 # Link
+message(STATUS "OpenCV_DIR is ${OpenCV_DIR}")
 target_link_libraries(ocvs ${OpenCV_LIBS})
 
 # Installation
