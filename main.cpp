@@ -11,11 +11,8 @@ int main()
 
     for (decltype(A.rows) i = 0; i < A.rows; ++i)
     {
-        auto pt = A.ptr<unsigned short>(i);
-        for (decltype(A.cols) j = 0; j < A.cols; ++j)
-        {
-            std::cout << pt[j] << ' ';
-        }
+        std::for_each_n(A.ptr<unsigned short>(i), A.cols, [](auto n)
+            { std::cout << n << ' '; });
         std::cout << '\n';
     }
 
