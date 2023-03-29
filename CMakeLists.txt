@@ -109,6 +109,8 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES MSVC)
         /wd4464
         /wd4514
         /wd5045
+        /wd4710
+        /wd4711
         /Zc:__cplusplus
         /Zc:preprocessor
     )
