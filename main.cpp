@@ -35,10 +35,17 @@ int main()
 
     C += 1;
     C.copyTo(A.row(0));
+    cv::Mat D = A;
+    cv::Mat(A.row(2) + A.row(3)).copyTo(D.row(2));
+
+    cv::Mat E = A.clone();
+    E.row(9) = A.row(1) + A.row(2) + A.row(3);
 
     PRINT_NAME_AND_ELEMS(A);
     PRINT_NAME_AND_ELEMS(B);
     PRINT_NAME_AND_ELEMS(C);
+    PRINT_NAME_AND_ELEMS(D);
+    PRINT_NAME_AND_ELEMS(E);
 
     std::cout << "press any key\n";
     char ch;
