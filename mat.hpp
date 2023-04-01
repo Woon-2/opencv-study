@@ -1,0 +1,58 @@
+#ifndef __mat
+#define __mat
+
+#include <iostream>
+#include <numeric>
+#include <algorithm>
+
+#include <opencv2/opencv.hpp>
+
+#include "experimentLogger.hpp"
+
+#define PRINT_NAME_AND_ELEMS(mat) std::cout << "---Mat " << #mat << "---\n"; printMat(mat);
+
+void printMat(const cv::Mat& mat)
+{
+    for (decltype(mat.rows) i = 0; i < mat.rows; ++i)
+    {
+        std::for_each_n(mat.ptr<unsigned short>(i), mat.cols, [](auto n)
+            { std::cout << n << ' '; });
+        std::cout << '\n';
+    }
+}
+
+void matAssignTest()
+{
+    EXPERIMENT_LOG();
+    
+    cv::Mat A(10, 10, CV_16U);
+    std::iota(A.begin<unsigned short>(), A.end<unsigned short>(),
+        unsigned short(0));
+
+    cv::Mat B = A.row(3);
+    cv::Mat C = B.clone();
+    try
+    {
+        cv::Mat D = C.row(5);
+        std::cout << "cv::Mat D = C.row(5); must be failed.\n";
+        std::abort();
+    }
+    catch([[maybe_unused]] cv::Exception& e)
+    {}
+
+    C += 1;
+    C.copyTo(A.row(0));
+    cv::Mat D = A;
+    cv::Mat(A.row(2) + A.row(3)).copyTo(D.row(2));
+
+    cv::Mat E = A.clone();
+    E.row(9) = A.row(1) + A.row(2) + A.row(3);
+
+    PRINT_NAME_AND_ELEMS(A);
+    PRINT_NAME_AND_ELEMS(B);
+    PRINT_NAME_AND_ELEMS(C);
+    PRINT_NAME_AND_ELEMS(D);
+    PRINT_NAME_AND_ELEMS(E);
+}
+
+#endif //mat

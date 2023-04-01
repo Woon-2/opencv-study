@@ -68,7 +68,7 @@ endif()
 
 # Configure main project
 
-add_executable(ocvs main.cpp)
+add_executable(ocvs main.cpp mat.hpp experimentLogger.hpp)
 
 # See below link for finding GCC options.
 # https://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html
@@ -111,6 +111,7 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES MSVC)
         /wd5045
         /wd4710
         /wd4711
+        /wd4820
         /Zc:__cplusplus
         /Zc:preprocessor
     )
