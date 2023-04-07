@@ -11,6 +11,8 @@ int main()
     std::cout << "******************************\n";
 
     matAssignTest();
+    matTypeTest();
+    imageioTest();
 
     std::cout << "press any key\n";
     char ch;
