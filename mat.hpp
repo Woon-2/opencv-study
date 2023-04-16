@@ -84,8 +84,8 @@ void imageioTest()
 {
     EXPERIMENT_LOG();
     auto img = cv::imread("C:\\Users\\USER\\Desktop\\footprint of soilder\\opencv\\opencv-study\\seok.png");
-    cv::namedWindow("matTypeTest");
-    cv::imshow("matTypeTest", img);
+    cv::namedWindow("imageioTest");
+    cv::imshow("imageioTest", img);
     cv::waitKey(30);
 }
 
