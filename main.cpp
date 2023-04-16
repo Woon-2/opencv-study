@@ -13,6 +13,7 @@ int main()
     matAssignTest();
     matTypeTest();
     imageioTest();
+    subMatrixTest();
 
     std::cout << "press any key\n";
     char ch;

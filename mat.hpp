@@ -89,4 +89,14 @@ void imageioTest()
     cv::waitKey(30);
 }
 
+void subMatrixTest()
+{
+    EXPERIMENT_LOG();
+    auto img = cv::imread("C:\\Users\\USER\\Desktop\\footprint of soilder\\opencv\\opencv-study\\seok.png");
+    auto sub = img(cv::Range::all(), cv::Range(50, 250));
+    cv::namedWindow("subMatrixTest");
+    cv::imshow("subMatrixTest", sub);
+    cv::waitKey(30);
+}
+
 #endif //mat
