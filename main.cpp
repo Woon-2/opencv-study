@@ -14,6 +14,7 @@ int main()
     matTypeTest();
     imageioTest();
     subMatrixTest();
+    printMatTest();
 
     std::cout << "press any key\n";
     char ch;

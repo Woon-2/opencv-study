@@ -99,4 +99,11 @@ void subMatrixTest()
     cv::waitKey(30);
 }
 
+void printMatTest()
+{
+    EXPERIMENT_LOG();
+    auto mat = cv::Mat(4, 2, CV_8UC4, cv::Scalar(4, 16, 64, 128));
+    std::cout << mat;
+}
+
 #endif //mat
