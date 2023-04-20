@@ -4,6 +4,7 @@
 #include <iostream>
 #include <numeric>
 #include <algorithm>
+#include <vector>
 
 #include <opencv2/opencv.hpp>
 
@@ -139,6 +140,34 @@ void testOutputFormat()
     std::cout << cv::format(mat, cv::Formatter::FMT_C) << "\n\n";
     std::cout << "[csv]\n";
     std::cout << cv::format(mat, cv::Formatter::FMT_CSV) << "\n\n";
+}
+
+void testPoint()
+{
+    EXPERIMENT_LOG();
+    auto p1 = cv::Point2i(3, 4);
+    auto p2 = cv::Point3f(2.3f, 4.5f, 6.7f);
+    auto p3 = cv::Point2i(cv::Size(1, 2));
+    auto p4 = cv::Point3f(cv::Vec3f(1.1f, 2.2f, 3.3f));
+
+    std::cout << p1 << '\n';
+    std::cout << p2 << '\n';
+    std::cout << p3 << '\n';
+    std::cout << p4 << '\n';
+}
+
+void testStdVec()
+{
+    EXPERIMENT_LOG();
+    auto v1 = std::vector<float>(5);
+    std::iota(std::begin(v1), std::end(v1), 1);
+    
+    std::cout << cv::Mat(v1) << '\n';
+
+    auto v2 = std::vector<cv::Point2f>(5);
+    std::ranges::generate(v2, [](){ return cv::Point2f{CV_PI, 0.f}; });
+
+    std::cout << v2 << '\n';
 }
 
 #endif //mat

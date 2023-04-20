@@ -18,6 +18,8 @@ int main()
     testInitializer();
     testRandu();
     testOutputFormat();
+    testPoint();
+    testStdVec();
 
     std::cout << "press any key\n";
     char ch;
