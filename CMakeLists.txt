@@ -43,6 +43,31 @@ endif()
 
 find_package(OpenCV REQUIRED)
 
+# Find and setup google test
+if(NOT DEFINED GTEST_ROOT
+    AND NOT DEFINED ENV{GTEST_ROOT})
+    message(STATUS "the variable \"GTEST_ROOT\" has not been defined.")
+
+    set(GTEST_GIT_URL "https://github.com/google/googletest.git" CACHE STRING
+        "github url for google test" FORCE)
+    set(GTEST_COMMIT_HASH "d25e625364a2078c940da2cb1fcf098aa184fd9f" CACHE STRING
+        "git commit hash for specific google test version" FORCE)
+
+    message(STATUS "downloading google test [${GTEST_COMMIT_HASH}] from ${GTEST_GIT_URL}...")
+
+    include(FetchContent)
+    FetchContent_Declare(
+        googletest
+        URL https://github.com/google/googletest/archive/d25e625364a2078c940da2cb1fcf098aa184fd9f.zip
+    )
+    # For Windows: Prevent overriding the parent project's compiler/linker settings
+    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+    FetchContent_MakeAvailable(googletest)
+else()
+    find_package(GTest REQUIRED)
+endif()
+
 # Copy dlls to build directory for Windows
 if (WIN32)
     find_path(OpenCV_BINDIR
