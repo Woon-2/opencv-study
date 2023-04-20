@@ -103,7 +103,42 @@ void printMatTest()
 {
     EXPERIMENT_LOG();
     auto mat = cv::Mat(4, 2, CV_8UC4, cv::Scalar(4, 16, 64, 128));
-    std::cout << mat;
+    std::cout << mat << '\n';
+}
+
+void initializerTest()
+{
+    EXPERIMENT_LOG();
+    cv::Mat A = (cv::Mat_<double>(3, 3) << 1, 2, 3, 4, 5, 6, 7, 8, 9);
+    cv::Mat B = cv::Mat_<double>({1, 2, 3, 4, 5, 6, 7, 8, 9}).reshape(3);
+    std::cout << A << '\n';
+    std::cout << B << '\n';
+}
+
+void randuTest()
+{
+    EXPERIMENT_LOG();
+    auto mat = cv::Mat(4, 4, CV_8UC4, cv::Scalar::zeros());
+    cv::randu(mat, cv::Scalar::zeros(), cv::Scalar::all(255));
+    std::cout << mat << '\n';
+}
+
+void outputFormatTest()
+{
+    EXPERIMENT_LOG();
+    auto mat = cv::Mat(3, 2, CV_8UC3);
+    cv::randu(mat, cv::Scalar::zeros(), cv::Scalar::all(255));
+
+    std::cout << "[default]\n";
+    std::cout << mat << "\n\n";
+    std::cout << "[python]\n";
+    std::cout << cv::format(mat, cv::Formatter::FMT_PYTHON) << "\n\n";
+    std::cout << "[numpy]\n";
+    std::cout << cv::format(mat, cv::Formatter::FMT_NUMPY) << "\n\n";
+    std::cout << "[C]\n";
+    std::cout << cv::format(mat, cv::Formatter::FMT_C) << "\n\n";
+    std::cout << "[csv]\n";
+    std::cout << cv::format(mat, cv::Formatter::FMT_CSV) << "\n\n";
 }
 
 #endif //mat

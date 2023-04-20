@@ -15,6 +15,9 @@ int main()
     imageioTest();
     subMatrixTest();
     printMatTest();
+    initializerTest();
+    randuTest();
+    outputFormatTest();
 
     std::cout << "press any key\n";
     char ch;
