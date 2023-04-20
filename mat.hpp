@@ -21,7 +21,7 @@ void printMat(const cv::Mat& mat)
     }
 }
 
-void matAssignTest()
+void testMatAssign()
 {
     EXPERIMENT_LOG();
     
@@ -63,7 +63,7 @@ void matAssignTest()
     PRINT_NAME_AND_ELEMS(G);
 }
 
-void matTypeTest()
+void testMatType()
 {
     EXPERIMENT_LOG();
     cv::Mat mtx(3, 3, CV_32F); // make a 3x3 floating-point matrix
@@ -80,33 +80,33 @@ void matTypeTest()
     static_assert(CV_16FC2 == CV_16FC(2));
 }
 
-void imageioTest()
+void testImageIO()
 {
     EXPERIMENT_LOG();
     auto img = cv::imread("C:\\Users\\USER\\Desktop\\footprint of soilder\\opencv\\opencv-study\\seok.png");
-    cv::namedWindow("imageioTest");
-    cv::imshow("imageioTest", img);
+    cv::namedWindow("testImageIO");
+    cv::imshow("testImageIO", img);
     cv::waitKey(30);
 }
 
-void subMatrixTest()
+void testSubMatrix()
 {
     EXPERIMENT_LOG();
     auto img = cv::imread("C:\\Users\\USER\\Desktop\\footprint of soilder\\opencv\\opencv-study\\seok.png");
     auto sub = img(cv::Range::all(), cv::Range(50, 250));
-    cv::namedWindow("subMatrixTest");
-    cv::imshow("subMatrixTest", sub);
+    cv::namedWindow("testSubMatrix");
+    cv::imshow("testSubMatrix", sub);
     cv::waitKey(30);
 }
 
-void printMatTest()
+void testPrintMat()
 {
     EXPERIMENT_LOG();
     auto mat = cv::Mat(4, 2, CV_8UC4, cv::Scalar(4, 16, 64, 128));
     std::cout << mat << '\n';
 }
 
-void initializerTest()
+void testInitializer()
 {
     EXPERIMENT_LOG();
     cv::Mat A = (cv::Mat_<double>(3, 3) << 1, 2, 3, 4, 5, 6, 7, 8, 9);
@@ -115,7 +115,7 @@ void initializerTest()
     std::cout << B << '\n';
 }
 
-void randuTest()
+void testRandu()
 {
     EXPERIMENT_LOG();
     auto mat = cv::Mat(4, 4, CV_8UC4, cv::Scalar::zeros());
@@ -123,7 +123,7 @@ void randuTest()
     std::cout << mat << '\n';
 }
 
-void outputFormatTest()
+void testOutputFormat()
 {
     EXPERIMENT_LOG();
     auto mat = cv::Mat(3, 2, CV_8UC3);

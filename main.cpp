@@ -10,14 +10,14 @@ int main()
     std::cout << "opencv expriments\n";
     std::cout << "******************************\n";
 
-    matAssignTest();
-    matTypeTest();
-    imageioTest();
-    subMatrixTest();
-    printMatTest();
-    initializerTest();
-    randuTest();
-    outputFormatTest();
+    testMatAssign();
+    testMatType();
+    testImageIO();
+    testSubMatrix();
+    testPrintMat();
+    testInitializer();
+    testRandu();
+    testOutputFormat();
 
     std::cout << "press any key\n";
     char ch;
