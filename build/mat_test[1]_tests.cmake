@@ -1,0 +1,7 @@
+add_test([=[HelloTest.BasicAssertions]=]  [==[C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/Release/mat_test.exe]==] [==[--gtest_filter=HelloTest.BasicAssertions]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[HelloTest.BasicAssertions]=]  PROPERTIES WORKING_DIRECTORY [==[C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build]==] SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[HelloTest.BasicAssertions2]=]  [==[C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/Release/mat_test.exe]==] [==[--gtest_filter=HelloTest.BasicAssertions2]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[HelloTest.BasicAssertions2]=]  PROPERTIES WORKING_DIRECTORY [==[C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build]==] SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[Terminate.Terminate]=]  [==[C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/Release/mat_test.exe]==] [==[--gtest_filter=Terminate.Terminate]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[Terminate.Terminate]=]  PROPERTIES WORKING_DIRECTORY [==[C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build]==] SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set(  mat_test_TESTS HelloTest.BasicAssertions HelloTest.BasicAssertions2 Terminate.Terminate)

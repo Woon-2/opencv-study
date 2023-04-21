@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/mat_test[1]_tests.cmake")
+  include("C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/mat_test[1]_tests.cmake")
+else()
+  add_test(mat_test_NOT_BUILT mat_test_NOT_BUILT)
+endif()

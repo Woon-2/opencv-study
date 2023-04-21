@@ -22,11 +22,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{0F4A6B84-2FE6-3AAE-9775-37BD17512394}</ProjectGuid>
+    <ProjectGuid>{337C5886-CF68-3A4C-BAE0-C3DD1F0311EC}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
-    <ProjectName>ocvs</ProjectName>
+    <ProjectName>mat_test</ProjectName>
     <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -60,72 +60,79 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\Debug\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ocvs.dir\Debug\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ocvs</TargetName>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">mat_test.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">mat_test</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\Release\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ocvs.dir\Release\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ocvs</TargetName>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">mat_test.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">mat_test</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\MinSizeRel\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ocvs.dir\MinSizeRel\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ocvs</TargetName>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">mat_test.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">mat_test</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\RelWithDebInfo\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ocvs.dir\RelWithDebInfo\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ocvs</TargetName>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">mat_test.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">mat_test</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Program Files/opencv/install/include" /Zc:__cplusplus</AdditionalOptions>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/_deps/googletest-src/googletest/include" /external:I "C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/_deps/googletest-src/googletest"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <DisableSpecificWarnings>4668;4464;4514;5045;4710;4711;4820</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
-      <LanguageStandard>stdcpp20</LanguageStandard>
       <Optimization>Disabled</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <SupportJustMyCode>false</SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <UseStandardPreprocessor>true</UseStandardPreprocessor>
-      <WarningLevel>EnableAllWarnings</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;WIN32_LEAN_AND_MIN;NOMINMAX;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;WIN32_LEAN_AND_MIN;NOMINMAX;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Program Files\opencv\install\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\_deps\googletest-src\googletest\include;C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\_deps\googletest-src\googletest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Program Files\opencv\install\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\_deps\googletest-src\googletest\include;C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\_deps\googletest-src\googletest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -D TEST_TARGET=mat_test -D "TEST_EXECUTABLE=C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/Debug/mat_test.exe" -D TEST_EXECUTOR= -D "TEST_WORKING_DIR=C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build" -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D TEST_FILTER= -D NO_PRETTY_TYPES=FALSE -D NO_PRETTY_VALUES=FALSE -D TEST_LIST=mat_test_TESTS -D "CTEST_FILE=C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/mat_test[1]_tests.cmake" -D TEST_DISCOVERY_TIMEOUT=5 -D TEST_XML_OUTPUT_DIR= -P "C:/Program Files/CMake/share/cmake-3.25/Modules/GoogleTestAddTests.cmake"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470d.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470d.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470d.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470d.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470d.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470d.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470d.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470d.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470d.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470d.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470d.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470d.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470d.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470d.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470d.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470d.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>lib\Debug\gtest_main.lib;lib\Debug\gtest.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/Debug/ocvs.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/Debug/ocvs.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/Debug/mat_test.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/Debug/mat_test.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -134,46 +141,53 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Program Files/opencv/install/include" /Zc:__cplusplus</AdditionalOptions>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/_deps/googletest-src/googletest/include" /external:I "C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/_deps/googletest-src/googletest"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
-      <DisableSpecificWarnings>4668;4464;4514;5045;4710;4711;4820</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <LanguageStandard>stdcpp20</LanguageStandard>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <SupportJustMyCode>false</SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <UseStandardPreprocessor>true</UseStandardPreprocessor>
-      <WarningLevel>EnableAllWarnings</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN32_LEAN_AND_MIN;NOMINMAX;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN32_LEAN_AND_MIN;NOMINMAX;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Program Files\opencv\install\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\_deps\googletest-src\googletest\include;C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\_deps\googletest-src\googletest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Program Files\opencv\install\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\_deps\googletest-src\googletest\include;C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\_deps\googletest-src\googletest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -D TEST_TARGET=mat_test -D "TEST_EXECUTABLE=C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/Release/mat_test.exe" -D TEST_EXECUTOR= -D "TEST_WORKING_DIR=C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build" -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D TEST_FILTER= -D NO_PRETTY_TYPES=FALSE -D NO_PRETTY_VALUES=FALSE -D TEST_LIST=mat_test_TESTS -D "CTEST_FILE=C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/mat_test[1]_tests.cmake" -D TEST_DISCOVERY_TIMEOUT=5 -D TEST_XML_OUTPUT_DIR= -P "C:/Program Files/CMake/share/cmake-3.25/Modules/GoogleTestAddTests.cmake"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>lib\Release\gtest_main.lib;lib\Release\gtest.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/Release/ocvs.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/Release/ocvs.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/Release/mat_test.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/Release/mat_test.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -182,46 +196,53 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Program Files/opencv/install/include" /Zc:__cplusplus</AdditionalOptions>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/_deps/googletest-src/googletest/include" /external:I "C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/_deps/googletest-src/googletest"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
-      <DisableSpecificWarnings>4668;4464;4514;5045;4710;4711;4820</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <LanguageStandard>stdcpp20</LanguageStandard>
       <Optimization>MinSpace</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <SupportJustMyCode>false</SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <UseStandardPreprocessor>true</UseStandardPreprocessor>
-      <WarningLevel>EnableAllWarnings</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN32_LEAN_AND_MIN;NOMINMAX;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN32_LEAN_AND_MIN;NOMINMAX;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Program Files\opencv\install\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\_deps\googletest-src\googletest\include;C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\_deps\googletest-src\googletest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Program Files\opencv\install\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\_deps\googletest-src\googletest\include;C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\_deps\googletest-src\googletest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -D TEST_TARGET=mat_test -D "TEST_EXECUTABLE=C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/MinSizeRel/mat_test.exe" -D TEST_EXECUTOR= -D "TEST_WORKING_DIR=C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build" -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D TEST_FILTER= -D NO_PRETTY_TYPES=FALSE -D NO_PRETTY_VALUES=FALSE -D TEST_LIST=mat_test_TESTS -D "CTEST_FILE=C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/mat_test[1]_tests.cmake" -D TEST_DISCOVERY_TIMEOUT=5 -D TEST_XML_OUTPUT_DIR= -P "C:/Program Files/CMake/share/cmake-3.25/Modules/GoogleTestAddTests.cmake"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>lib\MinSizeRel\gtest_main.lib;lib\MinSizeRel\gtest.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/MinSizeRel/ocvs.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/MinSizeRel/ocvs.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/MinSizeRel/mat_test.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/MinSizeRel/mat_test.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -230,45 +251,52 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Program Files/opencv/install/include" /Zc:__cplusplus</AdditionalOptions>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/_deps/googletest-src/googletest/include" /external:I "C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/_deps/googletest-src/googletest"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <DisableSpecificWarnings>4668;4464;4514;5045;4710;4711;4820</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <LanguageStandard>stdcpp20</LanguageStandard>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <SupportJustMyCode>false</SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <UseStandardPreprocessor>true</UseStandardPreprocessor>
-      <WarningLevel>EnableAllWarnings</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN32_LEAN_AND_MIN;NOMINMAX;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN32_LEAN_AND_MIN;NOMINMAX;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Program Files\opencv\install\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\_deps\googletest-src\googletest\include;C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\_deps\googletest-src\googletest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Program Files\opencv\install\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\_deps\googletest-src\googletest\include;C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\_deps\googletest-src\googletest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -D TEST_TARGET=mat_test -D "TEST_EXECUTABLE=C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/RelWithDebInfo/mat_test.exe" -D TEST_EXECUTOR= -D "TEST_WORKING_DIR=C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build" -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D TEST_FILTER= -D NO_PRETTY_TYPES=FALSE -D NO_PRETTY_VALUES=FALSE -D TEST_LIST=mat_test_TESTS -D "CTEST_FILE=C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/mat_test[1]_tests.cmake" -D TEST_DISCOVERY_TIMEOUT=5 -D TEST_XML_OUTPUT_DIR= -P "C:/Program Files/CMake/share/cmake-3.25/Modules/GoogleTestAddTests.cmake"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;C:\Program Files\opencv\install\x64\vc17\lib\opencv_world470.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>lib\RelWithDebInfo\gtest_main.lib;lib\RelWithDebInfo\gtest.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/RelWithDebInfo/ocvs.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/RelWithDebInfo/ocvs.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/RelWithDebInfo/mat_test.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/build/RelWithDebInfo/mat_test.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -333,9 +361,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\main.cpp" />
-    <ClInclude Include="C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\mat.hpp" />
-    <ClInclude Include="C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\experimentLogger.hpp" />
+    <ClCompile Include="C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\matTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\ZERO_CHECK.vcxproj">
@@ -343,6 +369,14 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\_deps\googletest-build\googletest\gtest.vcxproj">
+      <Project>{B0796DA0-74CA-394D-8A4B-D061685261F1}</Project>
+      <Name>gtest</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\_deps\googletest-build\googletest\gtest_main.vcxproj">
+      <Project>{656EF0E0-9439-3241-9C6E-FA369A08DDD7}</Project>
+      <Name>gtest_main</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

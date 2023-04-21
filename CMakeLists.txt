@@ -68,6 +68,8 @@ else()
     find_package(GTest REQUIRED)
 endif()
 
+enable_testing()
+
 # Copy dlls to build directory for Windows
 if (WIN32)
     find_path(OpenCV_BINDIR
@@ -94,6 +96,7 @@ endif()
 # Configure main project
 
 add_executable(ocvs main.cpp mat.hpp experimentLogger.hpp)
+add_executable(mat_test matTest.cpp)
 
 # See below link for finding GCC options.
 # https://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html
@@ -162,6 +165,7 @@ set_target_properties(ocvs
 # Link
 message(STATUS "OpenCV_DIR is ${OpenCV_DIR}")
 target_link_libraries(ocvs ${OpenCV_LIBS})
+target_link_libraries(mat_test GTest::gtest_main)
 
 # Installation
 install(TARGETS ocvs
@@ -179,3 +183,7 @@ if(GIT_FOUND)
         COMMAND "${GIT_EXECUTABLE} --pretty=reference -6"
     )
 endif()
+
+# testing
+include(GoogleTest)
+gtest_discover_tests(mat_test)
