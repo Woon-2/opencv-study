@@ -98,74 +98,79 @@ endif()
 add_executable(ocvs main.cpp mat.hpp experimentLogger.hpp)
 add_executable(mat_test matTest.cpp)
 
-# See below link for finding GCC options.
-# https://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html
-if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
-    target_compile_options(ocvs
-    PRIVATE
-        -fconcepts
-        -Wall
-        -pedantic
-        -Wextra
-    )
-
-# See below link for finding Clang options.
-# https://clang.llvm.org/docs/ClangCommandLineReference.html
-elseif(CMAKE_CXX_COMPILER_ID MATCHES CLANG)
-    # Clang options differ by platform.
-    if(WIN32)  # clang-cl
-        target_compile_options(ocvs
+function(COMMON_CONFIGURATION targetName)
+    # See below link for finding GCC options.
+    # https://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html
+    if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
+        target_compile_options(${targetName}
         PRIVATE
-            "/clang:-fcoroutines-ts"
-            -fms-compatiability
+            -fconcepts
+            -Wall
+            -pedantic
+            -Wextra
         )
-    else()  # AppleClang or Clang on Linux
-        target_compile_options(ocvs
+
+    # See below link for finding Clang options.
+    # https://clang.llvm.org/docs/ClangCommandLineReference.html
+    elseif(CMAKE_CXX_COMPILER_ID MATCHES CLANG)
+        # Clang options differ by platform.
+        if(WIN32)  # clang-cl
+            target_compile_options(${targetName}
+            PRIVATE
+                "/clang:-fcoroutines-ts"
+                -fms-compatiability
+            )
+        else()  # AppleClang or Clang on Linux
+            target_compile_options(${targetName}
+            PRIVATE
+                -std=c++2a
+            )
+        endif()
+
+    # See below link for finding msvc options.
+    # https://docs.microsoft.com/en-us/cpp/build/reference/compiler-options-listed-by-category?view=msvc-160
+    elseif(CMAKE_CXX_COMPILER_ID MATCHES MSVC)
+        target_compile_options(${targetName}
         PRIVATE
-            -std=c++2a
+            /Wall
+            /JMC-
+            /wd4668
+            /wd4464
+            /wd4514
+            /wd5045
+            /wd4710
+            /wd4711
+            /wd4820
+            /Zc:__cplusplus
+            /Zc:preprocessor
         )
     endif()
 
-# See below link for finding msvc options.
-# https://docs.microsoft.com/en-us/cpp/build/reference/compiler-options-listed-by-category?view=msvc-160
-elseif(CMAKE_CXX_COMPILER_ID MATCHES MSVC)
-    target_compile_options(ocvs
-    PRIVATE
-        /Wall
-        /JMC-
-        /wd4668
-        /wd4464
-        /wd4514
-        /wd5045
-        /wd4710
-        /wd4711
-        /wd4820
-        /Zc:__cplusplus
-        /Zc:preprocessor
-    )
-endif()
+    # Platform setting
+    # Windows setting already exists, others not yet.
+    if(WIN32)
+        target_compile_definitions(${targetName}
+        PRIVATE
+            WIN32_LEAN_AND_MIN NOMINMAX
+        )
+        set_target_properties(${targetName}
+            PROPERTIES
+                WINDOWS_EXPORT_ALL_SYMBOLS OFF
+        )
+    endif()
 
-# Platform setting
-# Windows setting already exists, others not yet.
-if(WIN32)
-    target_compile_definitions(ocvs
-    PRIVATE
-        WIN32_LEAN_AND_MIN NOMINMAX
+    set_target_properties(${targetName}
+        PROPERTIES CXX_STANDARD 20
     )
-    set_target_properties(ocvs
-        PROPERTIES
-            WINDOWS_EXPORT_ALL_SYMBOLS OFF
-    )
-endif()
+endfunction()
 
-set_target_properties(ocvs
-    PROPERTIES CXX_STANDARD 20
-)
+COMMON_CONFIGURATION(ocvs)
+COMMON_CONFIGURATION(mat_test)
 
 # Link
 message(STATUS "OpenCV_DIR is ${OpenCV_DIR}")
 target_link_libraries(ocvs ${OpenCV_LIBS})
-target_link_libraries(mat_test GTest::gtest_main)
+target_link_libraries(mat_test GTest::gtest_main ${OpenCV_LIBS})
 
 # Installation
 install(TARGETS ocvs
