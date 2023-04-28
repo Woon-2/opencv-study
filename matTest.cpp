@@ -34,12 +34,22 @@ TEST(MatTest, assign002)
 
     auto B = A.row(3);
 
-    A.row(3) += 1;
+    A.row(3) += cv::Scalar::all( 1. );
 
-    for (auto i : std::views::iota(0, 3))
-    {
-        EXPECT_EQ(A.at<cv::Vec3f>(3, i), B.at<cv::Vec3f>(0, i));
-    }
+    // the way to check two matrices are identical
+    EXPECT_EQ( cv::sum(A.row(3) != B), cv::Scalar::zeros() );
+}
+
+TEST(MatTest, assign003)
+{
+    auto A = cv::Mat(200, 200, CV_16UC4);
+    cv::randu(A, cv::Scalar::zeros(), cv::Scalar::all(255));
+
+    auto B = A.row(3).clone();
+
+    A.row(3) += cv::Scalar::all( 1. );
+
+    EXPECT_EQ( cv::sum(A.row(3) == B), cv::Scalar::zeros() );
 }
 
 TEST(Terminate, Terminate)
