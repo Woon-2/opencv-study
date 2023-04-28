@@ -11,7 +11,7 @@
 #include <algorithm>
 #include <ranges>
 
-TEST(MatTest, assign001)
+TEST(MatTest, GenerateWithCPPStandardAlgorithm)
 {
     auto A = cv::Mat(10, 10, CV_16U);
     std::iota(A.begin<unsigned short>(), A.end<unsigned short>(),
@@ -27,7 +27,7 @@ TEST(MatTest, assign001)
     });
 }
 
-TEST(MatTest, assign002)
+TEST(MatTest, CopyARowSlight)
 {
     auto A = cv::Mat(200, 200, CV_32FC3);
     cv::randu(A, cv::Scalar::zeros(), cv::Scalar::all(255));
@@ -40,7 +40,7 @@ TEST(MatTest, assign002)
     EXPECT_EQ( cv::sum(A.row(3) != B), cv::Scalar::zeros() );
 }
 
-TEST(MatTest, assign003)
+TEST(MatTest, CopyARowDeep)
 {
     auto A = cv::Mat(200, 200, CV_16UC4);
     cv::randu(A, cv::Scalar::zeros(), cv::Scalar::all(255));
