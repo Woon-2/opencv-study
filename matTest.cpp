@@ -69,9 +69,9 @@ TEST(MatTest, AddingScalarReturnsRvalue)
     auto A = cv::Mat(10, 3, CV_32FC3);
     cv::randu( A, cv::Scalar::zeros(), cv::Scalar::all(255.) );
 
-    auto B = A.row(3) + cv::Scalar::zeros();
+    cv::Mat B = A.row(3) + cv::Scalar::zeros();
 
-    B = B + cv::Scalar::all(1.);
+    B += cv::Scalar::all(1.);
 
     EXPECT_EQ( cv::sum(A.row(3) == B), cv::Scalar::zeros() );
 }
@@ -105,6 +105,18 @@ TEST(MatTest, OperationWithScalarEffectsAllComponents)
     EXPECT_EQ( cv::sum( B != C ), cv::Scalar::zeros() );
     EXPECT_EQ( cv::sum( B != D ), cv::Scalar::zeros() ); 
     EXPECT_EQ( cv::sum( C != D ), cv::Scalar::zeros() ); 
+}
+
+TEST(MatTest, MatExprIsRvalue)
+{
+    auto A = cv::Mat(200, 200, CV_32FC3);
+    cv::randu( A, cv::Scalar::zeros(), cv::Scalar::all(255.) );
+
+    auto B = A.row(3) + cv::Scalar::zeros();
+    
+    B += cv::Scalar::ones();
+
+    EXPECT_EQ( cv::sum( A.row(3) != B ), cv::Scalar::zeros() );
 }
 
 TEST(Terminate, Terminate)
