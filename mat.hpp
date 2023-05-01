@@ -39,7 +39,7 @@ void testMatAssign()
         std::abort();
     }
     catch([[maybe_unused]] cv::Exception& e)
-    {}
+    { }
 
     C += 1;
     C.copyTo(A.row(0));

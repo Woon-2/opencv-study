@@ -43,7 +43,7 @@ TEST(MatTest, CopyingLValueIsSlightCopy)
 TEST(MatTest, CopyingCloneIsDeepCopy)
 {
     auto A = cv::Mat(200, 200, CV_16UC4);
-    cv::randu(A, cv::Scalar::zeros(), cv::Scalar::all(255.));
+    cv::randu( A, cv::Scalar::zeros(), cv::Scalar::all(255.) );
 
     auto B = A.row(3).clone();
 
@@ -55,7 +55,7 @@ TEST(MatTest, CopyingCloneIsDeepCopy)
 TEST(MatTest, CopyingRvalueIsDeepCopy)
 {
     auto A = cv::Mat(200, 200, CV_32FC3);
-    cv::randu(A, cv::Scalar::zeros(), cv::Scalar::all(255.));
+    cv::randu( A, cv::Scalar::zeros(), cv::Scalar::all(255.) );
 
     auto B = A.row(3) + A.row(2);
 
@@ -67,13 +67,40 @@ TEST(MatTest, CopyingRvalueIsDeepCopy)
 TEST(MatTest, AddingScalarReturnsLvalue)
 {
     auto A = cv::Mat(200, 200, CV_32FC3);
-    cv::randu(A, cv::Scalar::zeros(), cv::Scalar::all(255.));
+    cv::randu( A, cv::Scalar::zeros(), cv::Scalar::all(255.) );
 
     auto B = A.row(3) + cv::Scalar::zeros();
 
     B += cv::Scalar::all(1.);
 
     EXPECT_EQ( cv::sum(A.row(3) != B), cv::Scalar::zeros() );
+}
+
+TEST(MatTest, SubmatrixCannotRefOutsideOfSelf)
+{
+    auto A = cv::Mat(200, 200, CV_32FC3);
+    cv::randu( A, cv::Scalar::zeros(), cv::Scalar::all(255.) );
+
+    auto B = A.row(3);
+    auto C = cv::Vec3f();
+    EXPECT_THROW( C = B.row(5), cv::Exception );
+}
+
+TEST(MatTest, OperationWithScalarEffectsAllComponents)
+{
+    auto A = cv::Mat(200, 200, CV_32FC3);
+    cv::randu( A, cv::Scalar::zeros(), cv::Scalar::all(255.) );
+
+    auto B = A * 0.;
+
+    auto C = A;
+    C.forEach<cv::Vec3f>( [](auto& el, [[maybe_unused]] auto* pos) {
+        el[0] = 0.;
+        el[1] = 0.;
+        el[2] = 0.;
+    } );
+
+    EXPECT_EQ( cv::sum(B != C), cv::Scalar::zeros() ); 
 }
 
 TEST(Terminate, Terminate)
