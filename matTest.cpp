@@ -57,11 +57,23 @@ TEST(MatTest, CopyingRvalueIsDeepCopy)
     auto A = cv::Mat(200, 200, CV_32FC3);
     cv::randu(A, cv::Scalar::zeros(), cv::Scalar::all(255.));
 
-    auto B = A.row(3) + cv::Scalar::all(0.);
+    auto B = A.row(3) + A.row(2);
 
     B += cv::Scalar::all(1.);
 
     EXPECT_EQ( cv::sum(A.row(3) == B), cv::Scalar::zeros() );
+}
+
+TEST(MatTest, AddingScalarReturnsLvalue)
+{
+    auto A = cv::Mat(200, 200, CV_32FC3);
+    cv::randu(A, cv::Scalar::zeros(), cv::Scalar::all(255.));
+
+    auto B = A.row(3) + cv::Scalar::zeros();
+
+    B += cv::Scalar::all(1.);
+
+    EXPECT_EQ( cv::sum(A.row(3) != B), cv::Scalar::zeros() );
 }
 
 TEST(Terminate, Terminate)
