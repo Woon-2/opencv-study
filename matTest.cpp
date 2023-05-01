@@ -64,16 +64,16 @@ TEST(MatTest, CopyingRvalueIsDeepCopy)
     EXPECT_EQ( cv::sum(A.row(3) == B), cv::Scalar::zeros() );
 }
 
-TEST(MatTest, AddingScalarReturnsLvalue)
+TEST(MatTest, AddingScalarReturnsRvalue)
 {
-    auto A = cv::Mat(200, 200, CV_32FC3);
+    auto A = cv::Mat(10, 3, CV_32FC3);
     cv::randu( A, cv::Scalar::zeros(), cv::Scalar::all(255.) );
 
     auto B = A.row(3) + cv::Scalar::zeros();
 
-    B += cv::Scalar::all(1.);
+    B = B + cv::Scalar::all(1.);
 
-    EXPECT_EQ( cv::sum(A.row(3) != B), cv::Scalar::zeros() );
+    EXPECT_EQ( cv::sum(A.row(3) == B), cv::Scalar::zeros() );
 }
 
 TEST(MatTest, SubmatrixCannotRefOutsideOfSelf)
