@@ -100,7 +100,11 @@ TEST(MatTest, OperationWithScalarEffectsAllComponents)
         el[2] = 0.;
     } );
 
-    EXPECT_EQ( cv::sum(B != C), cv::Scalar::zeros() ); 
+    auto D = A.mul( cv::Scalar::all(0.) );
+
+    EXPECT_EQ( cv::sum( B != C ), cv::Scalar::zeros() );
+    EXPECT_EQ( cv::sum( B != D ), cv::Scalar::zeros() ); 
+    EXPECT_EQ( cv::sum( C != D ), cv::Scalar::zeros() ); 
 }
 
 TEST(Terminate, Terminate)
