@@ -1,6 +1,8 @@
 #ifndef __matTest
 #define __matTest
 
+#include "matComparison.hpp"
+
 #include <gtest/gtest.h>
 #include <opencv2/opencv.hpp>
 
@@ -13,7 +15,7 @@
 
 TEST(MatTest, GenerationWithCPPStandardAlgorithmWorks)
 {
-    auto A = cv::Mat(10, 10, CV_16U);
+    auto A = cv::Mat(200, 200, CV_16U);
     std::iota( A.begin<unsigned short>(), A.end<unsigned short>(),
         unsigned short(0) );
     
@@ -37,7 +39,7 @@ TEST(MatTest, CopyingLValueIsSlightCopy)
     B += cv::Scalar::all(1.);
 
     // the way to check two matrices are identical
-    EXPECT_EQ( cv::sum(A.row(3) != B), cv::Scalar::zeros() );
+    EXPECT_EQ( cv::bEqual( A.row(3), B ), true );
 }
 
 TEST(MatTest, CopyingCloneIsDeepCopy)
@@ -49,7 +51,7 @@ TEST(MatTest, CopyingCloneIsDeepCopy)
 
     B += cv::Scalar::all(1.);
 
-    EXPECT_EQ( cv::sum(A.row(3) == B), cv::Scalar::zeros() );
+    EXPECT_EQ( cv::bNotEqualAll( A.row(3), B ), true );
 }
 
 TEST(MatTest, CopyingRvalueIsDeepCopy)
@@ -61,19 +63,19 @@ TEST(MatTest, CopyingRvalueIsDeepCopy)
 
     B += cv::Scalar::all(1.);
 
-    EXPECT_EQ( cv::sum(A.row(3) == B), cv::Scalar::zeros() );
+    EXPECT_EQ( cv::bNotEqualAll( A.row(3), B ), true );
 }
 
 TEST(MatTest, AddingScalarReturnsRvalue)
 {
-    auto A = cv::Mat(10, 3, CV_32FC3);
+    auto A = cv::Mat(200, 200, CV_32FC3);
     cv::randu( A, cv::Scalar::zeros(), cv::Scalar::all(255.) );
 
     cv::Mat B = A.row(3) + cv::Scalar::zeros();
 
     B += cv::Scalar::all(1.);
 
-    EXPECT_EQ( cv::sum(A.row(3) == B), cv::Scalar::zeros() );
+    EXPECT_EQ( cv::bNotEqualAll( A.row(3), B ), true );
 }
 
 TEST(MatTest, SubmatrixCannotRefOutsideOfSelf)
@@ -102,9 +104,7 @@ TEST(MatTest, OperationWithScalarEffectsAllComponents)
 
     auto D = A.mul( cv::Scalar::all(0.) );
 
-    EXPECT_EQ( cv::sum( B != C ), cv::Scalar::zeros() );
-    EXPECT_EQ( cv::sum( B != D ), cv::Scalar::zeros() ); 
-    EXPECT_EQ( cv::sum( C != D ), cv::Scalar::zeros() ); 
+    EXPECT_EQ( cv::bEqual(B, C) && cv::bEqual(B, D) && cv::bEqual(C, D), true );
 }
 
 TEST(MatTest, MatExprIsRvalue)
@@ -116,7 +116,7 @@ TEST(MatTest, MatExprIsRvalue)
     
     B += cv::Scalar::ones();
 
-    EXPECT_EQ( cv::sum( A.row(3) != B ), cv::Scalar::zeros() );
+    EXPECT_EQ( cv::bEqual( A.row(3), B ), true );
 }
 
 TEST(Terminate, Terminate)

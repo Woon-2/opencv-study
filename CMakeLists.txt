@@ -96,7 +96,7 @@ endif()
 # Configure main project
 
 add_executable(ocvs main.cpp mat.hpp experimentLogger.hpp)
-add_executable(mat_test matTest.cpp)
+add_executable(mat_test matTest.cpp matComparison.hpp)
 
 function(COMMON_CONFIGURATION targetName)
     # See below link for finding GCC options.
@@ -185,7 +185,7 @@ find_package(Git)
 if(GIT_FOUND)
     add_custom_target(gitlog
         COMMENT "Git Commit Log:"
-        COMMAND "${GIT_EXECUTABLE} --pretty=reference -6"
+        COMMAND "${GIT_EXECUTABLE} log --pretty=reference -6"
     )
 endif()
 

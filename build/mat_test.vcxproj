@@ -382,6 +382,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\matTest.cpp" />
+    <ClInclude Include="C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\matComparison.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\build\ZERO_CHECK.vcxproj">

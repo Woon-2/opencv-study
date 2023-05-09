@@ -6,9 +6,17 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\matComparison.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
     <CustomBuild Include="C:\Users\USER\Desktop\footprint of soilder\opencv\opencv-study\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{EEC9EA7C-73A5-38DD-A9C5-542B94940DF8}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{11BB9431-16E1-3C56-A450-DB76C53188EA}</UniqueIdentifier>
     </Filter>
