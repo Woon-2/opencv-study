@@ -185,7 +185,8 @@ find_package(Git)
 if(GIT_FOUND)
     add_custom_target(gitlog
         COMMENT "Git Commit Log:"
-        COMMAND "${GIT_EXECUTABLE} log --pretty=reference -6"
+        # note: do not wrap the COMMAND with ""
+        COMMAND ${GIT_EXECUTABLE} log --pretty=reference -6
     )
 endif()
 
