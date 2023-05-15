@@ -178,6 +178,25 @@ TEST(IOTest, CopiedFileEqualsToSource)
     std::filesystem::remove({"C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok2.png"});
 }
 
+TEST(IOTest, ReadingGrayscaleDoesNotConvertToGrayscale)
+{
+    auto srcGray = cv::imread(SAMPLE_IMAGE_PATH, cv::IMREAD_GRAYSCALE);
+    cv::imwrite("C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok2.png", srcGray);
+
+    auto srcColor = cv::imread(SAMPLE_IMAGE_PATH);
+    auto gray = cv::Mat( srcColor.size(), srcColor.type() );
+    cv::cvtColor(srcColor, gray, cv::COLOR_BGR2GRAY);
+    cv::imwrite("C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok3.png", gray);
+
+    auto readedGrayscale = cv::imread("C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok2.png");
+    auto convertedToGrayscale = cv::imread("C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok3.png");
+
+    std::filesystem::remove({"C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok2.png"});
+    std::filesystem::remove({"C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok3.png"});
+
+    EXPECT_EQ( cv::bNotEqual(readedGrayscale, convertedToGrayscale), true );
+}
+
 TEST(Terminate, Terminate)
 {
     std::cout << "Press any key.\n";
