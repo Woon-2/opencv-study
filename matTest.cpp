@@ -1,6 +1,8 @@
 #ifndef __matTest
 #define __matTest
 
+#define SAMPLE_IMAGE_PATH "C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok.png"
+
 #include "matComparison.hpp"
 
 #include <gtest/gtest.h>
@@ -12,6 +14,7 @@
 #include <iterator>
 #include <algorithm>
 #include <ranges>
+#include <filesystem>
 
 TEST(MatTest, GenerationWithCPPStandardAlgorithmWorks)
 {
@@ -121,7 +124,7 @@ TEST(MatTest, MatExprIsRvalue)
 
 TEST(MatTest, Filter2DIsConvolutionOperation)
 {
-    auto temp = cv::Mat( cv::imread("C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok.png") );
+    auto temp = cv::imread(SAMPLE_IMAGE_PATH);
     auto img = cv::Mat3b( temp.size() );
     temp.convertTo( img, img.depth() );
 
@@ -163,6 +166,16 @@ TEST(MatTest, Filter2DIsConvolutionOperation)
     }
 
     EXPECT_EQ( isFilter2DConvolution, true );
+}
+
+TEST(IOTest, CopiedFileEqualsToSource)
+{
+    auto src = cv::imread(SAMPLE_IMAGE_PATH);
+    cv::imwrite("C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok2.png", src);
+    auto cp = cv::imread("C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok2.png");
+
+    EXPECT_EQ( cv::bEqual(src, cp), true );
+    std::filesystem::remove({"C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok2.png"});
 }
 
 TEST(Terminate, Terminate)
