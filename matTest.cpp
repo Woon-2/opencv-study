@@ -1,8 +1,6 @@
 #ifndef __matTest
 #define __matTest
 
-#define SAMPLE_IMAGE_PATH "C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok.png"
-
 #include "matComparison.hpp"
 
 #include <gtest/gtest.h>
@@ -15,6 +13,11 @@
 #include <algorithm>
 #include <ranges>
 #include <filesystem>
+#include <string>
+
+inline constexpr auto SAMPLE_IMAGE_PATH = "C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok.png";
+inline constexpr auto SAMPLE_OUTPUT_PATH = "C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok2.png";
+inline constexpr auto SAMPLE_OUTPUT_PATH2 = "C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok3.png";
 
 TEST(MatTest, GenerationWithCPPStandardAlgorithmWorks)
 {
@@ -171,28 +174,28 @@ TEST(MatTest, Filter2DIsConvolutionOperation)
 TEST(IOTest, CopiedFileEqualsToSource)
 {
     auto src = cv::imread(SAMPLE_IMAGE_PATH);
-    cv::imwrite("C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok2.png", src);
-    auto cp = cv::imread("C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok2.png");
+    cv::imwrite(SAMPLE_OUTPUT_PATH, src);
+    auto cp = cv::imread(SAMPLE_OUTPUT_PATH);
 
     EXPECT_EQ( cv::bEqual(src, cp), true );
-    std::filesystem::remove({"C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok2.png"});
+    std::filesystem::remove({SAMPLE_OUTPUT_PATH});
 }
 
 TEST(IOTest, ReadingGrayscaleDoesNotConvertToGrayscale)
 {
     auto srcGray = cv::imread(SAMPLE_IMAGE_PATH, cv::IMREAD_GRAYSCALE);
-    cv::imwrite("C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok2.png", srcGray);
+    cv::imwrite(SAMPLE_OUTPUT_PATH, srcGray);
 
     auto srcColor = cv::imread(SAMPLE_IMAGE_PATH);
     auto gray = cv::Mat( srcColor.size(), srcColor.type() );
     cv::cvtColor(srcColor, gray, cv::COLOR_BGR2GRAY);
-    cv::imwrite("C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok3.png", gray);
+    cv::imwrite(SAMPLE_OUTPUT_PATH2, gray);
 
-    auto readedGrayscale = cv::imread("C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok2.png");
-    auto convertedToGrayscale = cv::imread("C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok3.png");
+    auto readedGrayscale = cv::imread(SAMPLE_OUTPUT_PATH);
+    auto convertedToGrayscale = cv::imread(SAMPLE_OUTPUT_PATH2);
 
-    std::filesystem::remove({"C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok2.png"});
-    std::filesystem::remove({"C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok3.png"});
+    std::filesystem::remove({SAMPLE_OUTPUT_PATH});
+    std::filesystem::remove({SAMPLE_OUTPUT_PATH2});
 
     EXPECT_EQ( cv::bNotEqual(readedGrayscale, convertedToGrayscale), true );
 }
