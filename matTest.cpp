@@ -119,6 +119,52 @@ TEST(MatTest, MatExprIsRvalue)
     EXPECT_EQ( cv::bEqual( A.row(3), B ), true );
 }
 
+TEST(MatTest, Filter2DIsConvolutionOperation)
+{
+    auto temp = cv::Mat( cv::imread("C:/Users/USER/Desktop/footprint of soilder/opencv/opencv-study/seok.png") );
+    auto img = cv::Mat3b( temp.size() );
+    temp.convertTo( img, img.depth() );
+
+    auto imgRaisedContrastByFilter2D = cv::Mat3b( img.size() );
+
+    auto kernal = cv::Mat((cv::Mat_<char>(3, 3) << 0, -1, 0,
+                                              -1, 5, -1,
+                                              0, -1, 0));
+    cv::filter2D(img, imgRaisedContrastByFilter2D, img.depth(), kernal);
+
+    auto imgRaisedContrast = cv::Mat3b( img.size() );
+    
+    const auto nChannels = img.channels();
+
+    for ( auto i = 1; i < img.rows - 1; ++i ) {
+        auto prev = img.ptr(i - 1);
+        auto curr = img.ptr(i);
+        auto next = img.ptr(i + 1);
+        auto dest = imgRaisedContrast.ptr(i);
+
+        for ( auto j = nChannels; j < nChannels * ( img.cols - 1 ); ++j ) {
+            dest[j] = cv::saturate_cast<uchar>( curr[j] * 5 - prev[j] - curr[j - nChannels]
+                - curr[j + nChannels] - next[j] );
+        }
+    }
+
+    bool isFilter2DConvolution = true;
+
+    for ( auto i = 1; isFilter2DConvolution && i < img.rows - 1; ++i ) {
+        auto lhs = imgRaisedContrastByFilter2D.ptr(i);
+        auto rhs = imgRaisedContrast.ptr(i);
+
+        for ( auto j = nChannels; j < nChannels * ( img.cols - 1 ); ++j ) {
+            if (lhs[j] != rhs[j]) {
+                isFilter2DConvolution = false;
+                break;
+            }
+        }
+    }
+
+    EXPECT_EQ( isFilter2DConvolution, true );
+}
+
 TEST(Terminate, Terminate)
 {
     std::cout << "Press any key.\n";
